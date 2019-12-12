@@ -6,14 +6,14 @@ const cssnano = require('cssnano')({
     'default',
     {
       discardComments: {
-        removeAll: true
-      }
-    }
-  ]
+        removeAll: true,
+      },
+    },
+  ],
 });
 const purgecss = require('@fullhuman/postcss-purgecss')({
   content: ['./src/**/*.svelte', './public/**/*.html'],
-  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
 });
 
 module.exports = {
@@ -21,6 +21,6 @@ module.exports = {
     postcssImport,
     tailwindcss,
     autoprefixer,
-    ...(process.env.NODE_ENV === 'production' ? [purgecss, cssnano] : [])
-  ]
+    ...(process.env.NODE_ENV === 'production' ? [purgecss, cssnano] : []),
+  ],
 };

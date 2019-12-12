@@ -1,9 +1,9 @@
 <script>
-  import { navigate } from "svelte-routing";
-  import PaymentSummary from "../components/Payments/PaymentSummary.svelte";
-  import HomePageLink from "../components/HomePageLink.svelte";
-  import GoBackButton from "../components/Buttons/GoBackButton.svelte";
-  import PayButton from "../components/Buttons/PayButton.svelte";
+  import { navigate } from 'svelte-routing';
+  import PaymentSummary from '../components/Payments/PaymentSummary.svelte';
+  import HomePageLink from '../components/HomePageLink.svelte';
+  import GoBackButton from '../components/Buttons/GoBackButton.svelte';
+  import PayButton from '../components/Buttons/PayButton.svelte';
 
   export let type;
   export let course;
@@ -24,8 +24,8 @@
         <GoBackButton />
 
         <PayButton
-          action={'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=243772354-20f59e93-36e7-43fe-9fed-11b4c51ee5ef'}
-          value={'Ir a MercadoPago'} />
+          action="{'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=243772354-20f59e93-36e7-43fe-9fed-11b4c51ee5ef'}"
+          value="{'Ir a MercadoPago'}" />
       </div>
     </form>
   </div>

@@ -1,9 +1,9 @@
 <script>
-  import { navigate } from "svelte-routing";
-  import PaymentSummary from "../components/Payments/PaymentSummary.svelte";
-  import HomePageLink from "../components/HomePageLink.svelte";
-  import GoBackButton from "../components/Buttons/GoBackButton.svelte";
-  import PayButton from "../components/Buttons/PayButton.svelte";
+  import { navigate } from 'svelte-routing';
+  import PaymentSummary from '../components/Payments/PaymentSummary.svelte';
+  import HomePageLink from '../components/HomePageLink.svelte';
+  import GoBackButton from '../components/Buttons/GoBackButton.svelte';
+  import PayButton from '../components/Buttons/PayButton.svelte';
 
   export let type;
   export let course;
@@ -23,7 +23,7 @@
       <div class="flex">
         <GoBackButton />
 
-        <PayButton action={'https://undefinedschool.io'} value={'¡Ok!'} />
+        <PayButton action="{'https://undefinedschool.io'}" value="{'¡Ok!'}" />
       </div>
     </form>
   </div>

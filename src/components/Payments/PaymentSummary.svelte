@@ -7,9 +7,7 @@
 
 <div class="sm:mb-12 mb-20">
   <div class="mb-10">
-    <h1
-      class="leading-tight sm:mb-12 mb-24 sm:text-3xl text-4xl text-white-us
-      font-raleway text-center sm:text-left">
+    <h1 class="leading-tight sm:mb-12 mb-24 sm:text-3xl text-4xl text-white-us font-raleway text-center sm:text-left">
       Pago
       {#if type === 'Efectivo'}en{:else}con{/if}
       <span class="font-semibold text-cyan-us">{type}.</span>
