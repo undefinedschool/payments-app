@@ -1,0 +1,56 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/utilities';
+@import 'tailwindcss/components';
+
+@import './utilities.css';
+@import './components.css';
+
+html {
+  scroll-behavior: smooth;
+}
+
+.submit-button,
+.cancel-button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  display: inline-block;
+  padding: 10px;
+  font-size: 1.125rem;
+}
+
+.submit-button:hover,
+.cancel-button:hover {
+  transition: all 0.3s ease;
+}
+
+.submit-button {
+  color: #363636;
+  background-color: #00c6b3;
+  border: 1px solid #00c6b3;
+}
+
+.cancel-button {
+  color: #d6eadf;
+  background-color: transparent;
+}
+
+.submit-button:hover {
+  background-color: #00e6cf;
+}
+
+.cancel-button:hover {
+  background-color: #d6eadf26;
+  border: 1px solid #d6eadf66;
+}
+
+.blink {
+  color: #00c6b3;
+  font-weight: 400;
+  animation: blinker 0.95s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
