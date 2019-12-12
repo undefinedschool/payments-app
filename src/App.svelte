@@ -39,7 +39,7 @@
 <Router {url}>
   <div>
     <Route path="/">
-      <main class="p-5">
+      <main class="p-5 bg-black-us">
         <div class="max-w-xl flex flex-col h-screen justify-center m-auto">
 
           <HomePageLink />
