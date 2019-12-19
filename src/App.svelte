@@ -37,12 +37,11 @@
 </script>
 
 <Router {url}>
-  <div>
+  <div class="p-5 bg-black-us">
+    <HomePageLink />
     <Route path="/">
-      <main class="p-5 bg-black-us">
+      <main>
         <div class="max-w-xl flex flex-col h-screen justify-center m-auto">
-
-          <HomePageLink />
 
           <form on:submit|preventDefault="{onSubmit}">
             <SelectPaymentMethodTitle />
