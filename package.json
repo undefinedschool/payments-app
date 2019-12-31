@@ -23,6 +23,7 @@
     "@fullhuman/postcss-purgecss": "^1.3.0",
     "@tailwindcss/custom-forms": "^0.2.1",
     "autoprefixer": "^9.7.3",
+    "clipboard": "^2.0.4",
     "cssnano": "^4.1.10",
     "netlify-lambda": "^1.6.3",
     "postcss-cli": "^6.1.3",

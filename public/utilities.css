@@ -76,3 +76,10 @@
 .transition-ease-02 {
   transition: all 0.24s ease;
 }
+
+/* hover */
+.link:hover {
+  color: #00c6b3;
+  text-decoration: underline;
+  transition: all 0.4s;
+}

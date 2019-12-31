@@ -1,12 +1,14 @@
 <script>
   import { Router, Route, navigate } from 'svelte-routing';
   import { capitalize, getCurrentMonth } from './components/utils.svelte';
+  import BankTransfer from './routes/BankTransfer.svelte';
   import Cash from './routes/Cash.svelte';
   import Card from './routes/Card.svelte';
   import QR from './routes/QR.svelte';
   import BTC from './routes/BTC.svelte';
   import Navbar from './components/Navbar.svelte';
   import SelectPaymentMethodTitle from './components/Payments/SelectPaymentMethodTitle.svelte';
+  import Clipboard from 'clipboard';
 
   export let student;
   export let amount;
@@ -38,17 +40,28 @@
   }
 
   function onSubmit() {
-    const paymentType = getPaymentType();
+    // const paymentType = getPaymentType();
 
-    console.log(`Student: ${event.target.name.value}`);
-    console.log(`Email: ${event.target.email.value}`);
-    console.log(`Payment type: ${paymentType}`);
+    // console.log(`Student: ${event.target.name.value}`);
+    // console.log(`Email: ${event.target.email.value}`);
+    // console.log(`Payment type: ${paymentType}`);
 
     navigate(routes[selected.indexOf(1)], { replace: true });
     selected.fill(0);
   }
 
   const currentMonth = getCurrentMonth();
+
+  // clipboard copy
+  const clipboard = new Clipboard('.btn');
+
+  clipboard.on('success', e => {
+    console.info('Copied!');
+
+    e.clearSelection();
+  });
+
+  clipboard.on('error', e => console.error('Oops, something went wrong while copying...'));
 </script>
 
 <Router>
@@ -59,6 +72,9 @@
         <div class="max-w-xl flex flex-col h-screen justify-center m-auto">
 
           <form name="payments" method="POST" data-netlify="true" on:submit|preventDefault="{onSubmit}">
+
+            <input type="hidden" name="payments" value="contact" />
+
             <SelectPaymentMethodTitle />
             <!-- student info -->
             <section>
@@ -186,6 +202,13 @@
 
         </div>
       </main>
+    </Route>
+    <Route path="/type=bankTransfer">
+      <BankTransfer
+        amount="{ARS}"
+        course="{'Full Stack JavaScript'}"
+        type="{'Transferencia Bancaria'}"
+        {currentMonth} />
     </Route>
     <Route path="/type=cash">
       <Cash amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'Efectivo'}" {currentMonth} />

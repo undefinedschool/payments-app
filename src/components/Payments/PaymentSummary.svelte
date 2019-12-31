@@ -4,13 +4,16 @@
   export let currentMonth;
   export let amount;
   export let BTCWallet = '';
+  export let bankData = '';
+
+  const { accountNumber, CBU, CBUAlias } = bankData;
 </script>
 
 <div class="sm:mb-12 mb-20">
   <div class="mb-10">
     <h1 class="leading-tight sm:mb-12 mb-24 sm:text-3xl text-4xl text-white-us font-raleway text-center sm:text-left">
       Pago
-      {#if type === 'Efectivo' || type === 'BTC'}en{:else}con{/if}
+      {#if type === 'Efectivo' || type === 'BTC'}en{:else if type === 'Transferencia Bancaria'}por{:else}con{/if}
       <span class="font-semibold text-cyan-us">{type}.</span>
     </h1>
 
@@ -23,22 +26,70 @@
         <span class="font-light">Mes:</span>
         <span class="text-light-gray-us">{currentMonth}</span>
       </p>
+
+      {#if type === 'Transferencia Bancaria'}
+        <div class="mt-1 mb-4">
+          <p class="mb-1 text-summary-details text-lg">
+            <span class="font-light">Número de cuenta:</span>
+            <span class="font-medium text-light-gray-us">
+              <button title="¡Copiar!" type="button" class="inline link btn" data-clipboard-text="{accountNumber}">
+                {accountNumber}
+              </button>
+            </span>
+          </p>
+          <p class="mb-1 text-summary-details text-lg">
+            <span class="font-light">CBU:</span>
+            <span class="font-medium text-light-gray-us">
+              <span class="font-medium text-light-gray-us">
+                <button title="¡Copiar!" type="button" class="inline link btn" data-clipboard-text="{CBU}">
+                  {CBU}
+                </button>
+              </span>
+            </span>
+          </p>
+          <p class="text-summary-details text-lg">
+            <span class="font-light">Alias de CBU:</span>
+            <span class="font-medium text-light-gray-us">
+              <button title="¡Copiar!" type="button" class="inline link btn" data-clipboard-text="{CBUAlias}">
+                {CBUAlias}
+              </button>
+            </span>
+          </p>
+        </div>
+      {/if}
       {#if type === 'BTC'}
         <p class="sm:mb-3 mb-4 text-summary-details text-lg">
           <span class="font-light">Wallet:</span>
-          <span class="font-medium text-light-gray-us">{BTCWallet}</span>
+          <span class="font-medium text-light-gray-us">
+            <button title="¡Copiar!" type="button" class="inline link btn" data-clipboard-text="{BTCWallet}">
+              {BTCWallet}
+            </button>
+          </span>
         </p>
       {/if}
+
       <p class="text-summary-details text-xl">
         <span class="font-normal">Total:</span>
         {#if type === 'BTC'}
           <span class="font-bold text-cyan-us">{amount} BTC</span>
         {:else}
-          <span class="font-bold text-cyan-us">${amount} ARS</span>
+          <span class="font-bold text-cyan-us">${amount} ARS{type === 'Tarjeta de Crédito' ? '*' : ''}</span>
         {/if}
       </p>
     </div>
   </div>
+
+  {#if type === 'Transferencia Bancaria'}
+    <p class="text-sm text-left -mt-8 mb-12 font-payment-summary">
+      📋 Podés copiar los datos bancarios haciéndoles click
+    </p>
+  {/if}
+
+  {#if type === 'BTC'}
+    <p class="text-sm text-left -mt-8 mb-12 font-payment-summary">
+      📋 Podés copiar la dirección de la Wallet haciéndole click
+    </p>
+  {/if}
 
   {#if type === 'Tarjeta de Crédito'}
     <p class="text-sm text-left -mt-8 mb-12 font-payment-summary">
