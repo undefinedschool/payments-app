@@ -29,7 +29,21 @@
     selected[paymentCode] = 1;
   }
 
+  function getPaymentType() {
+    const paymentTypes = document.getElementsByName('type');
+
+    for (const type of paymentTypes) {
+      if (type.checked) return type.value;
+    }
+  }
+
   function onSubmit() {
+    const paymentType = getPaymentType();
+
+    console.log(`Student: ${event.target.name.value}`);
+    console.log(`Email: ${event.target.email.value}`);
+    console.log(`Payment type: ${paymentType}`);
+
     navigate(routes[selected.indexOf(1)], { replace: true });
     selected.fill(0);
   }
@@ -49,24 +63,24 @@
             <!-- student info -->
             <section>
               <div class="mb-3">
-                <label class="form-input-title font-raleway opacity-70" for="studentName">Nombre</label>
+                <label class="form-input-title font-raleway opacity-70" for="name">Nombre</label>
                 <input
                   class="form-input focus:outline-none focus:shadow-outline student-info-input"
                   aria-label="Nombre"
                   type="text"
                   name="name"
-                  id="studentName"
+                  id="name"
                   placeholder="{name}"
                   required />
               </div>
               <div class="mb-8">
-                <label class="form-input-title font-raleway opacity-70" for="student">E-mail</label>
+                <label class="form-input-title font-raleway opacity-70" for="email">E-mail</label>
                 <input
                   class="form-input focus:outline-none focus:shadow-outline student-info-input"
                   aria-label="Nombre"
                   type="email"
-                  name="studentEmail"
-                  id="studentEmail"
+                  name="email"
+                  id="email"
                   placeholder="{email}"
                   required />
               </div>

@@ -9,6 +9,11 @@
   export let course;
   export let currentMonth;
   export let amount;
+
+  const debitCardLink =
+    'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=243772354-20f59e93-36e7-43fe-9fed-11b4c51ee5ef';
+  const creditCardLink =
+    'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=243772354-61356159-d0a4-4a07-9380-1f657c41bbbc';
 </script>
 
 <main class="p-5" in:fade>
@@ -19,9 +24,7 @@
       <div class="flex">
         <GoBackButton />
 
-        <PayButton
-          action="{'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=243772354-20f59e93-36e7-43fe-9fed-11b4c51ee5ef'}"
-          value="{'Ir a MercadoPago'}" />
+        <PayButton action="{type === 'debitCard' ? debitCardLink : creditCardLink}" value="{'Ir a MercadoPago'}" />
       </div>
     </form>
   </div>
