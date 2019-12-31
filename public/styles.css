@@ -3637,6 +3637,10 @@ video {
   font-family: Work Sans, sans-serif;
 }
 
+.font-montserrat {
+  font-family: Montserrat, sans-serif;
+}
+
 .font-hairline {
   font-weight: 100;
 }
@@ -11708,6 +11712,14 @@ video {
   font-family: 'Montserrat', sans-serif;
 }
 
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
 /* opacity */
 
 .opacity-70 {
@@ -11765,7 +11777,6 @@ video {
 }
 
 .text-summary-details {
-  font-size: 1.25rem;
   color: #fafafa;
   font-family: Work Sans, sans-serif;
   display: -webkit-box;
@@ -14869,6 +14880,10 @@ html {
 
   .xs\:font-worksans {
     font-family: Work Sans, sans-serif;
+  }
+
+  .xs\:font-montserrat {
+    font-family: Montserrat, sans-serif;
   }
 
   .xs\:font-hairline {
@@ -25653,6 +25668,10 @@ html {
 
   .sm\:font-worksans {
     font-family: Work Sans, sans-serif;
+  }
+
+  .sm\:font-montserrat {
+    font-family: Montserrat, sans-serif;
   }
 
   .sm\:font-hairline {

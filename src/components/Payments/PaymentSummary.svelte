@@ -3,28 +3,41 @@
   export let course;
   export let currentMonth;
   export let amount;
+  export let BTCWallet = '';
 </script>
 
 <div class="sm:mb-12 mb-20">
   <div class="mb-10">
     <h1 class="leading-tight sm:mb-12 mb-24 sm:text-3xl text-4xl text-white-us font-raleway text-center sm:text-left">
       Pago
-      {#if type === 'Efectivo'}en{:else}con{/if}
+      {#if type === 'Efectivo' || type === 'BTC'}en{:else}con{/if}
       <span class="font-semibold text-cyan-us">{type}.</span>
     </h1>
 
     <div class="shadow-md bg-blue-us border-1 border-blue-us rounded p-2">
-      <p class="mb-1 text-summary-details">
+      <p class="mb-1 text-summary-details text-lg">
         <span class="font-light">Curso:</span>
         <span class="font-medium text-light-gray-us">{course}</span>
       </p>
-      <p class="sm:mb-3 mb-4 text-summary-details">
+      <p class="{type === 'BTC' ? 'mb-1' : 'sm:mb-3 mb-4'} text-summary-details text-lg">
         <span class="font-light">Mes:</span>
         <span class="text-light-gray-us">{currentMonth}</span>
       </p>
-      <p class="text-summary-details">
-        <span class="font-light">Total:</span>
-        <span class="font-bold text-cyan-us">${amount} ARS</span>
+      {#if type === 'BTC'}
+        <p class="sm:mb-3 mb-4 text-summary-details text-lg">
+          <span class="font-light">Wallet:</span>
+          <span class="font-medium text-light-gray-us">{BTCWallet}</span>
+        </p>
+      {/if}
+      <p class="text-summary-details text-xl">
+        <span class="font-normal">Total:</span>
+
+        {#if type === 'Efectivo'}
+          <span class="font-bold text-cyan-us">${amount} ARS</span>
+        {/if}
+        {#if type === 'BTC'}
+          <span class="font-bold text-cyan-us">{amount} BTC</span>
+        {/if}
       </p>
     </div>
   </div>

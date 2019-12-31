@@ -4,8 +4,9 @@
 </script>
 
 <form class="w-2/3" {action}>
-  <input
+  <button
     class="submit-button text-center w-full rounded focus:outline-none focus:shadow-outline shadow-md"
-    type="submit"
-    {value} />
+    type="submit">
+    {value}
+  </button>
 </form>

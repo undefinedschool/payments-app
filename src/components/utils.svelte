@@ -1,4 +1,6 @@
 <script context="module">
+  const paymentDate = '01/01/2020';
+
   export function capitalize(s) {
     if (typeof s !== 'string') return '';
 
@@ -8,6 +10,6 @@
   export function getCurrentMonth() {
     const options = { month: 'long', year: 'numeric' };
 
-    return capitalize(new Date().toLocaleDateString('es-ES', options));
+    return capitalize(new Date(paymentDate).toLocaleDateString('es-ES', options));
   }
 </script>

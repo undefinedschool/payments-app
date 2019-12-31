@@ -4,14 +4,15 @@
   import Cash from './routes/Cash.svelte';
   import Card from './routes/Card.svelte';
   import QR from './routes/QR.svelte';
-  import HomePageLink from './components/HomePageLink.svelte';
-  import ContinueButton from './components/Buttons/ContinueButton.svelte';
+  import BTC from './routes/BTC.svelte';
+  import Navbar from './components/Navbar.svelte';
   import SelectPaymentMethodTitle from './components/Payments/SelectPaymentMethodTitle.svelte';
-  import StudentInfo from './components/StudentInfo.svelte';
 
   export let name;
   export let email;
-  export let url = '';
+  export let amount;
+  export let creditCardAmount;
+  export let BTCAmount;
 
   const selected = [0, 0, 0, 0, 0, 0];
   const routes = {
@@ -36,17 +37,40 @@
   const currentMonth = getCurrentMonth();
 </script>
 
-<Router {url}>
+<Router>
   <div class="p-5 bg-black-us">
-    <HomePageLink />
+    <Navbar />
     <Route path="/">
       <main>
         <div class="max-w-xl flex flex-col h-screen justify-center m-auto">
 
-          <form on:submit|preventDefault="{onSubmit}">
+          <form on:submit|preventDefault="{onSubmit}" name="payments" method="POST" data-netlify="true">
             <SelectPaymentMethodTitle />
-
-            <StudentInfo {name} {email} />
+            <!-- student info -->
+            <section>
+              <div class="mb-3">
+                <label class="form-input-title opacity-70" for="username">Nombre</label>
+                <input
+                  class="form-input focus:outline-none focus:shadow-outline student-info-input"
+                  aria-label="Nombre"
+                  type="text"
+                  name="name"
+                  id="username"
+                  placeholder="{name}"
+                  required />
+              </div>
+              <div class="mb-8">
+                <label class="form-input-title opacity-70" for="email">E-mail</label>
+                <input
+                  class="form-input focus:outline-none focus:shadow-outline student-info-input"
+                  aria-label="Nombre"
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="{email}"
+                  required />
+              </div>
+            </section>
 
             <div class="sm:mb-3 mb-10">
               <span class="form-input-title opacity-70">Medio de pago</span>
@@ -139,23 +163,34 @@
               </div>
             </div>
 
-            <ContinueButton />
-
+            <button
+              class="submit-button text-center w-full rounded focus:outline-none focus:shadow-outline shadow-md"
+              type="submit">
+              Continuar
+            </button>
           </form>
+
         </div>
       </main>
     </Route>
     <Route path="/type=cash">
-      <Cash amount="{4800}" course="{'Full Stack JavaScript'}" type="{'Efectivo'}" {currentMonth} />
+      <Cash {amount} course="{'Full Stack JavaScript'}" type="{'Efectivo'}" {currentMonth} />
     </Route>
     <Route path="/type=debitCard">
-      <Card amount="{4800}" course="{'Full Stack JavaScript'}" type="{'Tarjeta de Débito'}" {currentMonth} />
+      <Card {amount} course="{'Full Stack JavaScript'}" type="{'Tarjeta de Débito'}" {currentMonth} />
     </Route>
     <Route path="/type=creditCard">
-      <Card amount="{'5184*'}" course="{'Full Stack JavaScript'}" type="{'Tarjeta de Crédito'}" {currentMonth} />
+      <Card
+        amount="{creditCardAmount}"
+        course="{'Full Stack JavaScript'}"
+        type="{'Tarjeta de Crédito'}"
+        {currentMonth} />
     </Route>
     <Route path="/type=QR">
-      <QR amount="{4800}" course="{'Full Stack JavaScript'}" type="{'Código QR'}" {currentMonth} />
+      <QR {amount} course="{'Full Stack JavaScript'}" type="{'Código QR'}" {currentMonth} />
+    </Route>
+    <Route path="/type=BTC">
+      <BTC {BTCAmount} course="{'Full Stack JavaScript'}" type="{'BTC'}" {currentMonth} />
     </Route>
   </div>
 </Router>

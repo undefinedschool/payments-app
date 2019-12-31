@@ -23,5 +23,5 @@
 }
 
 .text-summary-details {
-  @apply text-xl text-white-us font-worksans flex justify-between;
+  @apply text-white-us font-worksans flex justify-between;
 }
