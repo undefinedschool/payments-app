@@ -58,7 +58,7 @@
       <main>
         <div class="max-w-xl flex flex-col h-screen justify-center m-auto">
 
-          <form on:submit|preventDefault="{onSubmit}" name="payments" method="POST" data-netlify="true">
+          <form name="payments" method="POST" data-netlify="true" on:submit|preventDefault="{onSubmit}">
             <SelectPaymentMethodTitle />
             <!-- student info -->
             <section>
