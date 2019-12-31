@@ -31,12 +31,10 @@
       {/if}
       <p class="text-summary-details text-xl">
         <span class="font-normal">Total:</span>
-
-        {#if type === 'Efectivo'}
-          <span class="font-bold text-cyan-us">${amount} ARS</span>
-        {/if}
         {#if type === 'BTC'}
           <span class="font-bold text-cyan-us">{amount} BTC</span>
+        {:else}
+          <span class="font-bold text-cyan-us">${amount} ARS</span>
         {/if}
       </p>
     </div>

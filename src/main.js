@@ -3,11 +3,15 @@ import App from './App.svelte';
 const app = new App({
   target: document.body,
   props: {
-    name: 'Jane Doe',
-    email: 'jane@undefinedstudent.com',
-    amount: 5000,
-    creditCardAmount: 5400,
-    BTCAmount: 0.012,
+    student: {
+      name: 'Jane Doe',
+      email: 'jane@undefinedstudent.com',
+    },
+    amount: {
+      ARS: 5000,
+      creditCard: 5400,
+      BTCa: 0.012,
+    },
   },
 });
 

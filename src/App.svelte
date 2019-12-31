@@ -8,11 +8,11 @@
   import Navbar from './components/Navbar.svelte';
   import SelectPaymentMethodTitle from './components/Payments/SelectPaymentMethodTitle.svelte';
 
-  export let name;
-  export let email;
+  export let student;
   export let amount;
-  export let creditCardAmount;
-  export let BTCAmount;
+
+  const { name, email } = student;
+  const { ARS, creditCard, BTCa } = amount;
 
   const selected = [0, 0, 0, 0, 0, 0];
   const routes = {
@@ -49,30 +49,30 @@
             <!-- student info -->
             <section>
               <div class="mb-3">
-                <label class="form-input-title font-raleway opacity-70" for="username">Nombre</label>
+                <label class="form-input-title font-raleway opacity-70" for="studentName">Nombre</label>
                 <input
                   class="form-input focus:outline-none focus:shadow-outline student-info-input"
                   aria-label="Nombre"
                   type="text"
                   name="name"
-                  id="username"
+                  id="studentName"
                   placeholder="{name}"
                   required />
               </div>
               <div class="mb-8">
-                <label class="form-input-title font-raleway opacity-70" for="email">E-mail</label>
+                <label class="form-input-title font-raleway opacity-70" for="student">E-mail</label>
                 <input
                   class="form-input focus:outline-none focus:shadow-outline student-info-input"
                   aria-label="Nombre"
                   type="email"
-                  name="email"
-                  id="email"
+                  name="studentEmail"
+                  id="studentEmail"
                   placeholder="{email}"
                   required />
               </div>
             </section>
 
-            <div class="sm:mb-3 mb-10">
+            <section class="sm:mb-3 mb-10">
               <span class="form-input-title font-raleway opacity-70">Medio de pago</span>
 
               <div class="mt-2 sm:h-40 h-48 overflow-scroll">
@@ -161,7 +161,7 @@
                     on:click="{() => updateSelected(5)}" />
                 </label>
               </div>
-            </div>
+            </section>
 
             <button
               class="submit-button text-center w-full rounded focus:outline-none focus:shadow-outline shadow-md"
@@ -174,23 +174,19 @@
       </main>
     </Route>
     <Route path="/type=cash">
-      <Cash {amount} course="{'Full Stack JavaScript'}" type="{'Efectivo'}" {currentMonth} />
+      <Cash amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'Efectivo'}" {currentMonth} />
     </Route>
     <Route path="/type=debitCard">
-      <Card {amount} course="{'Full Stack JavaScript'}" type="{'Tarjeta de Débito'}" {currentMonth} />
+      <Card amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'Tarjeta de Débito'}" {currentMonth} />
     </Route>
     <Route path="/type=creditCard">
-      <Card
-        amount="{creditCardAmount}"
-        course="{'Full Stack JavaScript'}"
-        type="{'Tarjeta de Crédito'}"
-        {currentMonth} />
+      <Card amount="{creditCard}" course="{'Full Stack JavaScript'}" type="{'Tarjeta de Crédito'}" {currentMonth} />
     </Route>
     <Route path="/type=QR">
-      <QR {amount} course="{'Full Stack JavaScript'}" type="{'Código QR'}" {currentMonth} />
+      <QR amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'Código QR'}" {currentMonth} />
     </Route>
     <Route path="/type=BTC">
-      <BTC {BTCAmount} course="{'Full Stack JavaScript'}" type="{'BTC'}" {currentMonth} />
+      <BTC amount="{BTCa}" course="{'Full Stack JavaScript'}" type="{'BTC'}" {currentMonth} />
     </Route>
   </div>
 </Router>
