@@ -3,11 +3,7 @@
 @import 'tailwindcss/components';
 
 .form-input-title {
-  @apply block font-raleway text-white-us text-base font-semibold mb-2;
-}
-
-.form-payment-type {
-  @apply ml-2 font-raleway;
+  @apply block text-white-us text-base font-semibold mb-2;
 }
 
 .form-payment-border {

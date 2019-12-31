@@ -3,6 +3,7 @@ module.exports = {
     extend: {
       fontFamily: {
         raleway: ['Raleway', 'sans-serif'],
+        worksans: ['Work Sans', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif'],
       },
     },

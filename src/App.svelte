@@ -49,7 +49,7 @@
             <!-- student info -->
             <section>
               <div class="mb-3">
-                <label class="form-input-title opacity-70" for="username">Nombre</label>
+                <label class="form-input-title font-raleway opacity-70" for="username">Nombre</label>
                 <input
                   class="form-input focus:outline-none focus:shadow-outline student-info-input"
                   aria-label="Nombre"
@@ -60,7 +60,7 @@
                   required />
               </div>
               <div class="mb-8">
-                <label class="form-input-title opacity-70" for="email">E-mail</label>
+                <label class="form-input-title font-raleway opacity-70" for="email">E-mail</label>
                 <input
                   class="form-input focus:outline-none focus:shadow-outline student-info-input"
                   aria-label="Nombre"
@@ -73,13 +73,13 @@
             </section>
 
             <div class="sm:mb-3 mb-10">
-              <span class="form-input-title opacity-70">Medio de pago</span>
+              <span class="form-input-title font-raleway opacity-70">Medio de pago</span>
 
               <div class="mt-2 sm:h-40 h-48 overflow-scroll">
                 <label
                   class="{selected[0] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
-                  <span class="{selected[0] ? 'text-cyan-us' : 'text-white-us'} form-payment-type">
+                  <span class="{selected[0] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
                     Transferencia bancaria/depósito
                   </span>
                   <input
@@ -94,7 +94,7 @@
                 <label
                   class="{selected[1] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
-                  <span class="{selected[1] ? 'text-cyan-us' : 'text-white-us'} form-payment-type">Efectivo</span>
+                  <span class="{selected[1] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">Efectivo</span>
                   <input
                     type="radio"
                     class="transition-ease-02 form-radio h-5 w-5 text-white-us"
@@ -106,7 +106,7 @@
                 <label
                   class="{selected[2] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
-                  <span class="{selected[2] ? 'text-cyan-us' : 'text-white-us'} form-payment-type">
+                  <span class="{selected[2] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
                     Tarjeta de Débito
                   </span>
                   <input
@@ -120,7 +120,7 @@
                 <label
                   class="{selected[3] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
-                  <span class="{selected[3] ? 'text-cyan-us' : 'text-white-us'} form-payment-type">
+                  <span class="{selected[3] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
                     Tarjeta de Crédito
                   </span>
                   <input
@@ -134,7 +134,7 @@
                 <label
                   class="{selected[4] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
-                  <span class="{selected[4] ? 'text-cyan-us' : 'text-white-us'} form-payment-type">
+                  <span class="{selected[4] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
                     Código QR
                     <span class="text-gray-us">(MercadoPago)</span>
                   </span>
@@ -149,7 +149,7 @@
                 <label
                   class="{selected[5] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
-                  <span class="{selected[5] ? 'text-cyan-us' : 'text-white-us'} form-payment-type">
+                  <span class="{selected[5] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
                     Bitcoin
                     <span class="text-gray-us">(BTC)</span>
                   </span>
