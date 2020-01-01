@@ -16,8 +16,8 @@
     'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=243772354-61356159-d0a4-4a07-9380-1f657c41bbbc';
 </script>
 
-<main class="p-5" in:fade>
-  <div class="max-w-xl flex flex-col h-screen justify-center m-auto">
+<main in:fade>
+  <div class="max-w-2xl flex flex-col h-screen justify-center m-auto">
     <form>
       <PaymentSummary {type} {course} {currentMonth} {amount} />
 

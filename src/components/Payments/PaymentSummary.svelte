@@ -18,18 +18,18 @@
     </h1>
 
     <div class="shadow-md bg-blue-us border-1 border-blue-us rounded p-2">
-      <p class="mb-1 text-summary-details text-lg">
+      <p class="mb-1 text-summary-details sm:text-sm text-lg">
         <span class="font-light">Curso:</span>
         <span class="font-medium text-light-gray-us">{course}</span>
       </p>
-      <p class="{type === 'BTC' ? 'mb-1' : 'sm:mb-3 mb-4'} text-summary-details text-lg">
+      <p class="{type === 'BTC' ? 'mb-1' : 'sm:mb-3 mb-4'} text-summary-details sm:text-sm text-lg">
         <span class="font-light">Mes:</span>
         <span class="text-light-gray-us">{currentMonth}</span>
       </p>
 
       {#if type === 'Transferencia Bancaria'}
         <div class="mt-1 mb-4">
-          <p class="mb-1 text-summary-details text-lg">
+          <p class="mb-1 text-summary-details sm:text-sm text-lg">
             <span class="font-light">Número de cuenta:</span>
             <span class="font-medium text-light-gray-us">
               <button title="¡Copiar!" type="button" class="inline link btn" data-clipboard-text="{accountNumber}">
@@ -37,7 +37,7 @@
               </button>
             </span>
           </p>
-          <p class="mb-1 text-summary-details text-lg">
+          <p class="mb-1 text-summary-details sm:text-sm text-lg">
             <span class="font-light">CBU:</span>
             <span class="font-medium text-light-gray-us">
               <span class="font-medium text-light-gray-us">
@@ -47,7 +47,7 @@
               </span>
             </span>
           </p>
-          <p class="text-summary-details text-lg">
+          <p class="text-summary-details sm:text-sm text-lg">
             <span class="font-light">Alias de CBU:</span>
             <span class="font-medium text-light-gray-us">
               <button title="¡Copiar!" type="button" class="inline link btn" data-clipboard-text="{CBUAlias}">
@@ -58,7 +58,7 @@
         </div>
       {/if}
       {#if type === 'BTC'}
-        <p class="sm:mb-3 mb-4 text-summary-details text-lg">
+        <p class="sm:mb-3 mb-4 text-summary-details sm:text-sm text-lg">
           <span class="font-light">Wallet:</span>
           <span class="font-medium text-light-gray-us">
             <button title="¡Copiar!" type="button" class="inline link btn" data-clipboard-text="{BTCWallet}">

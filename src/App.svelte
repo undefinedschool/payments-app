@@ -65,11 +65,11 @@
 </script>
 
 <Router>
-  <div class="p-5 bg-black-us">
+  <div class="p-4 bg-black-us">
     <Navbar />
     <Route path="/">
       <main>
-        <div class="max-w-xl flex flex-col h-screen justify-center m-auto">
+        <div class="max-w-2xl flex flex-col h-screen justify-center m-auto">
 
           <form name="payments" method="POST" data-netlify="true" on:submit|preventDefault="{onSubmit}">
 
@@ -114,7 +114,7 @@
                   </span>
                   <input
                     type="radio"
-                    class="transition-ease-02 form-radio h-5 w-5 text-white-us"
+                    class="transition-all-4 form-radio h-5 w-5 text-white-us"
                     name="type"
                     value="bankTransfer"
                     on:click="{() => updateSelected(0)}"
@@ -127,7 +127,7 @@
                   <span class="{selected[1] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">Efectivo</span>
                   <input
                     type="radio"
-                    class="transition-ease-02 form-radio h-5 w-5 text-white-us"
+                    class="transition-all-4 form-radio h-5 w-5 text-white-us"
                     name="type"
                     value="cash"
                     on:click="{() => updateSelected(1)}" />
@@ -141,7 +141,7 @@
                   </span>
                   <input
                     type="radio"
-                    class="transition-ease-02 form-radio h-5 w-5 text-white-us"
+                    class="transition-all-4 form-radio h-5 w-5 text-white-us"
                     name="type"
                     value="debitCard"
                     on:click="{() => updateSelected(2)}" />
@@ -155,7 +155,7 @@
                   </span>
                   <input
                     type="radio"
-                    class="transition-ease-02 form-radio h-5 w-5 text-white-us"
+                    class="transition-all-4 form-radio h-5 w-5 text-white-us"
                     name="type"
                     value="creditCard"
                     on:click="{() => updateSelected(3)}" />
@@ -170,7 +170,7 @@
                   </span>
                   <input
                     type="radio"
-                    class="transition-ease-02 form-radio h-5 w-5 text-white-us"
+                    class="transition-all-4 form-radio h-5 w-5 text-white-us"
                     name="type"
                     value="QR"
                     on:click="{() => updateSelected(4)}" />
@@ -185,7 +185,7 @@
                   </span>
                   <input
                     type="radio"
-                    class="transition-ease-02 form-radio h-5 w-5 text-white-us"
+                    class="transition-all-4 form-radio h-5 w-5 text-white-us"
                     name="type"
                     value="BTC"
                     on:click="{() => updateSelected(5)}" />

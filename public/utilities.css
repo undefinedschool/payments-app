@@ -73,8 +73,8 @@
 }
 
 /* transition */
-.transition-ease-02 {
-  transition: all 0.24s ease;
+.transition-all-4 {
+  transition: all 0.4s;
 }
 
 /* hover */

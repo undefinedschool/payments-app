@@ -21,8 +21,8 @@
   };
 </script>
 
-<main class="p-5" in:fade>
-  <div class="max-w-xl flex flex-col h-screen justify-center m-auto">
+<main in:fade>
+  <div class="max-w-2xl flex flex-col h-screen justify-center m-auto">
     <form>
       <PaymentSummary {type} {course} {currentMonth} {amount} {bankData} />
 

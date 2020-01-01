@@ -20,7 +20,7 @@ html {
 
 .submit-button:hover,
 .cancel-button:hover {
-  transition: all 0.3s ease;
+  transition: all 0.4s;
 }
 
 .submit-button {
