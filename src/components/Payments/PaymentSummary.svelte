@@ -68,7 +68,7 @@
         </p>
       {/if}
 
-      <p class="text-summary-details text-xl">
+      <p class="text-summary-details text-lg">
         <span class="font-normal">Total:</span>
         {#if type === 'BTC'}
           <span class="font-bold text-cyan-us">{amount} BTC</span>
@@ -99,12 +99,12 @@
   {/if}
 
   {#if type === 'Efectivo'}
-    <p class="text-xl font-payment-summary">
+    <p class="text-lg font-payment-summary">
       Podés realizar el pago en
       {@html `<span class="font-semibold">la próxima clase</span>. 😁`}
     </p>
   {:else if ['Tarjeta de Débito', 'Tarjeta de Crédito', 'Código QR'].includes(type)}
-    <p class="text-xl font-payment-summary">
+    <p class="text-lg font-payment-summary">
       El pago se va a completar a través de
       {@html `<span class="font-semibold">MercadoPago</span>. 😁`}
     </p>
