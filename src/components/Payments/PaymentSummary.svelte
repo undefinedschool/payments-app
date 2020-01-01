@@ -14,7 +14,7 @@
     <h1 class="leading-tight sm:mb-12 mb-24 sm:text-3xl text-4xl text-white-us font-raleway text-center sm:text-left">
       Pago
       {#if type === 'Efectivo' || type === 'BTC'}en{:else if type === 'Transferencia Bancaria'}por{:else}con{/if}
-      <span class="font-semibold text-cyan-us">{type}.</span>
+      <span class="font-semibold text-cyan-us">{type}</span>
     </h1>
 
     <div class="shadow-md bg-blue-us border-1 border-blue-us rounded p-2">
