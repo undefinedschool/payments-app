@@ -1,4 +1,5 @@
 <script>
+  // imports
   import { Router, Route, navigate } from 'svelte-routing';
   import { capitalize, getCurrentMonth } from './components/utils.svelte';
   import BankTransfer from './routes/BankTransfer.svelte';
@@ -9,10 +10,10 @@
   import Navbar from './components/Navbar.svelte';
   import SelectPaymentMethodTitle from './components/Payments/SelectPaymentMethodTitle.svelte';
   import Clipboard from 'clipboard';
-
+  // exports
   export let student;
   export let amount;
-
+  // local state
   const { name, email } = student;
   const { ARS, creditCard, BTCa } = amount;
 

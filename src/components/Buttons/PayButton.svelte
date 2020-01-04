@@ -3,10 +3,12 @@
   export let value;
 </script>
 
-<form class="w-2/3" {action}>
-  <button
-    class="submit-button text-center w-full rounded focus:outline-none focus:shadow-outline shadow-md"
-    type="submit">
-    {value}
-  </button>
-</form>
+<div class="w-2/3">
+  <a href="{action}" target="_blank" rel="noopener" class="text-s">
+    <button
+      class="submit-button text-center w-full rounded focus:outline-none focus:shadow-outline shadow-md"
+      type="button">
+      {value}
+    </button>
+  </a>
+</div>

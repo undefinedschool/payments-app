@@ -13,14 +13,12 @@
 
 <main in:fade>
   <div class="max-w-2xl flex flex-col h-screen justify-center m-auto">
-    <form>
-      <PaymentSummary {type} {course} {currentMonth} {amount} />
+    <PaymentSummary {type} {course} {currentMonth} {amount} />
 
-      <div class="flex">
-        <GoBackButton />
+    <div class="flex">
+      <GoBackButton />
 
-        <PayButton action="{'https://undefinedschool.io'}" value="{'¡Ok!'}" />
-      </div>
-    </form>
+      <PayButton action="{'https://undefinedschool.io'}" value="{'¡Ok!'}" />
+    </div>
   </div>
 </main>
