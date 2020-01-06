@@ -205,20 +205,16 @@
       </main>
     </Route>
     <Route path="/type=bankTransfer">
-      <BankTransfer
-        amount="{ARS}"
-        course="{'Full Stack JavaScript'}"
-        type="{'Transferencia Bancaria'}"
-        {currentMonth} />
+      <BankTransfer amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'bankTransfer'}" {currentMonth} />
     </Route>
     <Route path="/type=cash">
-      <Cash amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'Efectivo'}" {currentMonth} />
+      <Cash amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'cash'}" {currentMonth} />
     </Route>
     <Route path="/type=debitCard">
-      <Card amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'Tarjeta de Débito'}" {currentMonth} />
+      <Card amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'debitCard'}" {currentMonth} />
     </Route>
     <Route path="/type=creditCard">
-      <Card amount="{creditCard}" course="{'Full Stack JavaScript'}" type="{'Tarjeta de Crédito'}" {currentMonth} />
+      <Card amount="{creditCard}" course="{'Full Stack JavaScript'}" type="{'creditCard'}" {currentMonth} />
     </Route>
     <Route path="/type=QR">
       <QR amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'Código QR'}" {currentMonth} />

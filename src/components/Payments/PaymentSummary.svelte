@@ -7,14 +7,23 @@
   export let bankData = '';
 
   const { accountNumber, CBU, CBUAlias } = bankData;
+
+  const payment = {
+    bankTransfer: 'Transferencia Bancaria',
+    cash: 'Efectivo',
+    debitCard: 'Tarjeta de Débito',
+    creditCard: 'Tarjeta de Crédito',
+    QR: 'QR',
+    BTC: 'BTC',
+  };
 </script>
 
 <div class="sm:mb-12 mb-20">
   <div class="mb-10">
     <h1 class="leading-tight sm:mb-12 mb-24 sm:text-3xl text-4xl text-white-us font-raleway text-center sm:text-left">
       Pago
-      {#if type === 'Efectivo' || type === 'BTC'}en{:else if type === 'Transferencia Bancaria'}por{:else}con{/if}
-      <span class="font-semibold text-cyan-us">{type}</span>
+      {#if type === 'cash' || type === 'BTC'}en{:else if type === 'bankTransfer'}por{:else}con{/if}
+      <span class="font-semibold text-cyan-us">{payment[type]}</span>
     </h1>
 
     <div class="shadow-md bg-blue-us border-1 border-blue-us rounded p-2">
@@ -27,7 +36,7 @@
         <span class="text-light-gray-us">{currentMonth}</span>
       </p>
 
-      {#if type === 'Transferencia Bancaria'}
+      {#if type === 'bankTransfer'}
         <div class="mt-1 mb-4">
           <p class="mb-1 text-summary-details sm:text-sm text-lg">
             <span class="font-light">Número de cuenta:</span>
@@ -73,13 +82,13 @@
         {#if type === 'BTC'}
           <span class="font-bold text-cyan-us">{amount} BTC</span>
         {:else}
-          <span class="font-bold text-cyan-us">${amount} ARS{type === 'Tarjeta de Crédito' ? '*' : ''}</span>
+          <span class="font-bold text-cyan-us">${amount} ARS{type === 'creditCard' ? '*' : ''}</span>
         {/if}
       </p>
     </div>
   </div>
 
-  {#if type === 'Transferencia Bancaria'}
+  {#if type === 'bankTransfer'}
     <p class="text-sm text-left -mt-8 mb-12 font-payment-summary">
       📋 Podés copiar los datos bancarios haciéndoles click
     </p>
@@ -91,19 +100,19 @@
     </p>
   {/if}
 
-  {#if type === 'Tarjeta de Crédito'}
+  {#if type === 'creditCard'}
     <p class="text-sm text-left -mt-8 mb-12 font-payment-summary">
-      *Los pagos con tarjeta de crédito tienen un
+      *Los pagos con creditCard tienen un
       {@html `<span class="font-medium">recargo del 8%.</span>`}
     </p>
   {/if}
 
-  {#if type === 'Efectivo'}
+  {#if type === 'cash'}
     <p class="text-lg font-payment-summary">
       Podés realizar el pago en
       {@html `<span class="font-semibold">la próxima clase</span>. 😁`}
     </p>
-  {:else if ['Tarjeta de Débito', 'Tarjeta de Crédito', 'Código QR'].includes(type)}
+  {:else if ['debitCard', 'creditCard', 'Código QR'].includes(type)}
     <p class="text-lg font-payment-summary">
       El pago se va a completar a través de
       {@html `<span class="font-semibold">MercadoPago</span>. 😁`}
