@@ -6,7 +6,7 @@
   export let BTCWallet = '';
   export let bankData = '';
 
-  const { accountNumber, CBU, CBUAlias } = bankData;
+  const { CBU, CBUAlias } = bankData;
 
   const payment = {
     bankTransfer: 'Transferencia Bancaria',
@@ -39,14 +39,6 @@
       {#if type === 'bankTransfer'}
         <div class="mt-1 mb-4">
           <p class="mb-1 text-summary-details sm:text-sm text-lg">
-            <span class="font-light">Número de cuenta:</span>
-            <span class="font-medium text-light-gray-us">
-              <button title="¡Copiar!" type="button" class="inline link btn" data-clipboard-text="{accountNumber}">
-                {accountNumber}
-              </button>
-            </span>
-          </p>
-          <p class="mb-1 text-summary-details sm:text-sm text-lg">
             <span class="font-light">CBU:</span>
             <span class="font-medium text-light-gray-us">
               <span class="font-medium text-light-gray-us">
@@ -70,7 +62,7 @@
         <p class="sm:mb-3 mb-4 text-summary-details sm:text-sm text-lg">
           <span class="font-light">Wallet:</span>
           <span class="font-medium text-light-gray-us">
-            <button title="¡Copiar!" type="button" class="inline link btn" data-clipboard-text="{BTCWallet}">
+            <button title="¡Copiar!" type="button" class="inline link btn break-all" data-clipboard-text="{BTCWallet}">
               {BTCWallet}
             </button>
           </span>
@@ -92,11 +84,27 @@
     <p class="text-sm text-left -mt-8 mb-12 font-payment-summary">
       📋 Podés copiar los datos bancarios haciéndoles click
     </p>
+    <p class="pl-2 text-sm text-left -mt-8 mb-12">
+      <span class="font-light text-white-us font-worksans">
+        Una vez realizada la transferencia, por favor enviá el comprobante a
+      </span>
+      <a href="mailto:contacto@undefinedschool.io">
+        <strong class="link text-white-us font-worksans">contacto@undefinedschool.io</strong>
+      </a>
+    </p>
   {/if}
 
   {#if type === 'BTC'}
     <p class="text-sm text-left -mt-8 mb-12 font-payment-summary">
       📋 Podés copiar la dirección de la Wallet haciéndole click
+    </p>
+    <p class="pl-2 text-sm text-left -mt-8 mb-12">
+      <span class="font-light text-white-us font-worksans">
+        Una vez realizada la transacción, por favor enviá el comprobante a
+      </span>
+      <a href="mailto:contacto@undefinedschool.io">
+        <strong class="link text-white-us font-worksans">contacto@undefinedschool.io</strong>
+      </a>
     </p>
   {/if}
 

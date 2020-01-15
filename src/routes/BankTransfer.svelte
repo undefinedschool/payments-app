@@ -10,12 +10,10 @@
   export let type;
   export let currentMonth;
 
-  const accountNumber = '4031454-4 159-8';
   const CBU = '00701590 30004031454484';
   const CBUAlias = 'nhquiroz-galicia';
 
   const bankData = {
-    accountNumber,
     CBU,
     CBUAlias,
   };

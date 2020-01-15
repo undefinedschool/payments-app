@@ -1,5 +1,5 @@
 <script context="module">
-  const paymentDate = '01/01/2020';
+  const paymentDate = '02/01/2020';
 
   export function capitalize(s) {
     if (typeof s !== 'string') return '';

@@ -106,7 +106,7 @@
             <section class="sm:mb-3 mb-10">
               <span class="form-input-title font-raleway opacity-70">Medio de pago</span>
 
-              <div class="mt-2 sm:h-40 h-48 overflow-scroll">
+              <div class="mt-2 sm:h-40 h-48 overflow-auto">
                 <label
                   class="{selected[0] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
