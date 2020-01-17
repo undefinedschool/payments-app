@@ -3,7 +3,7 @@
   import { Router, Route, navigate } from 'svelte-routing';
   import { capitalize, getCurrentMonth } from './components/utils.svelte';
   import BankTransfer from './routes/BankTransfer.svelte';
-  import Cash from './routes/Cash.svelte';
+  // import Cash from './routes/Cash.svelte';
   import Card from './routes/Card.svelte';
   import QR from './routes/QR.svelte';
   import BTC from './routes/BTC.svelte';
@@ -17,14 +17,14 @@
   const { name, email } = student;
   const { ARS, creditCard, BTCa } = amount;
 
-  const selected = [0, 0, 0, 0, 0, 0];
+  const selected = [0, 0, 0, 0, 0];
   const routes = {
     0: '/type=bankTransfer',
-    1: '/type=cash',
-    2: '/type=debitCard',
-    3: '/type=creditCard',
-    4: '/type=QR',
-    5: '/type=BTC',
+    // 1: '/type=cash',
+    1: '/type=debitCard',
+    2: '/type=creditCard',
+    3: '/type=QR',
+    4: '/type=BTC',
   };
 
   function updateSelected(paymentCode) {
@@ -122,7 +122,7 @@
                     required />
                 </label>
 
-                <label
+                <!-- <label
                   class="{selected[1] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
                   <span class="{selected[1] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">Efectivo</span>
@@ -132,12 +132,12 @@
                     name="type"
                     value="cash"
                     on:click="{() => updateSelected(1)}" />
-                </label>
+                </label> -->
 
                 <label
-                  class="{selected[2] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
+                  class="{selected[1] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
-                  <span class="{selected[2] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
+                  <span class="{selected[1] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
                     Tarjeta de Débito
                   </span>
                   <input
@@ -145,13 +145,13 @@
                     class="transition-all-4 form-radio h-5 w-5 text-white-us"
                     name="type"
                     value="debitCard"
-                    on:click="{() => updateSelected(2)}" />
+                    on:click="{() => updateSelected(1)}" />
                 </label>
 
                 <label
-                  class="{selected[3] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
+                  class="{selected[2] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
-                  <span class="{selected[3] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
+                  <span class="{selected[2] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
                     Tarjeta de Crédito
                   </span>
                   <input
@@ -159,13 +159,13 @@
                     class="transition-all-4 form-radio h-5 w-5 text-white-us"
                     name="type"
                     value="creditCard"
-                    on:click="{() => updateSelected(3)}" />
+                    on:click="{() => updateSelected(2)}" />
                 </label>
 
                 <label
-                  class="{selected[4] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
+                  class="{selected[3] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
-                  <span class="{selected[4] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
+                  <span class="{selected[3] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
                     Código QR
                     <span class="text-gray-us">(MercadoPago)</span>
                   </span>
@@ -174,13 +174,13 @@
                     class="transition-all-4 form-radio h-5 w-5 text-white-us"
                     name="type"
                     value="QR"
-                    on:click="{() => updateSelected(4)}" />
+                    on:click="{() => updateSelected(3)}" />
                 </label>
 
                 <label
-                  class="{selected[5] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
+                  class="{selected[4] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
-                  <span class="{selected[5] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
+                  <span class="{selected[4] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
                     Bitcoin
                     <span class="text-gray-us">(BTC)</span>
                   </span>
@@ -189,7 +189,7 @@
                     class="transition-all-4 form-radio h-5 w-5 text-white-us"
                     name="type"
                     value="BTC"
-                    on:click="{() => updateSelected(5)}" />
+                    on:click="{() => updateSelected(4)}" />
                 </label>
               </div>
             </section>
@@ -207,9 +207,9 @@
     <Route path="/type=bankTransfer">
       <BankTransfer amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'bankTransfer'}" {currentMonth} />
     </Route>
-    <Route path="/type=cash">
+    <!-- <Route path="/type=cash">
       <Cash amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'cash'}" {currentMonth} />
-    </Route>
+    </Route> -->
     <Route path="/type=debitCard">
       <Card amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'debitCard'}" {currentMonth} />
     </Route>
@@ -217,7 +217,7 @@
       <Card amount="{creditCard}" course="{'Full Stack JavaScript'}" type="{'creditCard'}" {currentMonth} />
     </Route>
     <Route path="/type=QR">
-      <QR amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'Código QR'}" {currentMonth} />
+      <QR amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'QR'}" {currentMonth} />
     </Route>
     <Route path="/type=BTC">
       <BTC amount="{BTCa}" course="{'Full Stack JavaScript'}" type="{'BTC'}" {currentMonth} />
