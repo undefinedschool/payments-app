@@ -10,7 +10,7 @@
   export let type;
   export let currentMonth;
 
-  const BTCWallet = '3EBAVUa9cEHg5VxHKDpYqrtCxXDUtQD4id';
+  const BTCWallet = '172KEqf3n8cmi9K9y2MHgY58tWX6iWyksm';
 </script>
 
 <main in:fade>
