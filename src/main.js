@@ -8,9 +8,9 @@ const app = new App({
       email: 'jane@undefinedstudent.com',
     },
     amount: {
-      ARS: 5000,
-      creditCard: 5400,
-      BTCa: 0.0096,
+      ARS: 5200,
+      creditCard: 5720,
+      BTCa: 0.0097,
     },
   },
 });

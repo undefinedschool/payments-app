@@ -110,8 +110,8 @@
 
   {#if type === 'creditCard'}
     <p class="text-sm text-left -mt-8 mb-12 font-payment-summary">
-      *Los pagos con creditCard tienen un
-      {@html `<span class="font-medium">recargo del 8%.</span>`}
+      *Los pagos con Tarjeta de Crédito tienen un
+      {@html `<span class="font-medium">recargo del 10%.</span>`}
     </p>
   {/if}
 

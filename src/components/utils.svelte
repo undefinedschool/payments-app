@@ -1,5 +1,8 @@
 <script context="module">
-  const paymentDate = '02/01/2020';
+  const currentDate = new Date();
+  const nextMonth = `0${currentDate.getMonth() + 2}`;
+  const currentYear = currentDate.getFullYear();
+  const paymentDate = `${nextMonth}/01/${currentYear}`;
 
   export function capitalize(s) {
     if (typeof s !== 'string') return '';
