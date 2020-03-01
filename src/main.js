@@ -10,7 +10,7 @@ const app = new App({
     amount: {
       ARS: 5200,
       creditCard: 5720,
-      BTCa: 0.0097,
+      BTCa: 0.0098,
     },
   },
 });
