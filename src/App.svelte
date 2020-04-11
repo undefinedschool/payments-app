@@ -3,9 +3,9 @@
   import { Router, Route, navigate } from 'svelte-routing';
   import { capitalize, getCurrentMonth } from './components/utils.svelte';
   import BankTransfer from './routes/BankTransfer.svelte';
-  // import Cash from './routes/Cash.svelte';
+  // import  from './routes/.svelte';
   import Card from './routes/Card.svelte';
-  import QR from './routes/QR.svelte';
+  import MP from './routes/MP.svelte';
   import BTC from './routes/BTC.svelte';
   import Navbar from './components/Navbar.svelte';
   import SelectPaymentMethodTitle from './components/Payments/SelectPaymentMethodTitle.svelte';
@@ -15,16 +15,14 @@
   export let amount;
   // local state
   const { name, email } = student;
-  const { ARS, creditCard, BTCa } = amount;
+  const { ARS, BTCa } = amount;
 
-  const selected = [0, 0, 0, 0, 0];
+  const selected = [0, 0, 0, 0];
   const routes = {
     0: '/type=bankTransfer',
-    // 1: '/type=cash',
-    1: '/type=debitCard',
-    2: '/type=creditCard',
-    3: '/type=QR',
-    4: '/type=BTC',
+    1: '/type=card',
+    2: '/type=MP',
+    3: '/type=BTC',
   };
 
   function updateSelected(paymentCode) {
@@ -41,12 +39,6 @@
   }
 
   function onSubmit() {
-    // const paymentType = getPaymentType();
-
-    // console.log(`Student: ${event.target.name.value}`);
-    // console.log(`Email: ${event.target.email.value}`);
-    // console.log(`Payment type: ${paymentType}`);
-
     navigate(routes[selected.indexOf(1)], { replace: true });
     selected.fill(0);
   }
@@ -63,6 +55,14 @@
   });
 
   clipboard.on('error', e => console.error('Oops, something went wrong while copying...'));
+
+  // warm up serverless functions
+  const { PAYMENTS_SERVICE_WARMUP_URL } = process.env;
+
+  (() =>
+    fetch(PAYMENTS_SERVICE_WARMUP_URL)
+      .then(_ => _)
+      .catch(console.error))();
 </script>
 
 <Router>
@@ -111,7 +111,7 @@
                   class="{selected[0] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
                   <span class="{selected[0] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
-                    Transferencia bancaria/depósito
+                    Transferencia bancaria ó Depósito
                   </span>
                   <input
                     type="radio"
@@ -122,29 +122,17 @@
                     required />
                 </label>
 
-                <!-- <label
-                  class="{selected[1] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
-                  justify-between border-solid border-1 rounded p-4 h-16 mb-2">
-                  <span class="{selected[1] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">Efectivo</span>
-                  <input
-                    type="radio"
-                    class="transition-all-4 form-radio h-5 w-5 text-white-us"
-                    name="type"
-                    value="cash"
-                    on:click="{() => updateSelected(1)}" />
-                </label> -->
-
                 <label
                   class="{selected[1] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
                   <span class="{selected[1] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
-                    Tarjeta de Débito
+                    Tarjeta (Débito ó Crédito)
                   </span>
                   <input
                     type="radio"
                     class="transition-all-4 form-radio h-5 w-5 text-white-us"
                     name="type"
-                    value="debitCard"
+                    value="card"
                     on:click="{() => updateSelected(1)}" />
                 </label>
 
@@ -152,13 +140,14 @@
                   class="{selected[2] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
                   <span class="{selected[2] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
-                    Tarjeta de Crédito
+                    Dinero en cuenta de
+                    <span class="font-semibold">Mercado Pago</span>
                   </span>
                   <input
                     type="radio"
                     class="transition-all-4 form-radio h-5 w-5 text-white-us"
                     name="type"
-                    value="creditCard"
+                    value="MP"
                     on:click="{() => updateSelected(2)}" />
                 </label>
 
@@ -166,30 +155,15 @@
                   class="{selected[3] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
                   justify-between border-solid border-1 rounded p-4 h-16 mb-2">
                   <span class="{selected[3] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
-                    Código QR
-                    <span class="text-gray-us">(MercadoPago)</span>
-                  </span>
-                  <input
-                    type="radio"
-                    class="transition-all-4 form-radio h-5 w-5 text-white-us"
-                    name="type"
-                    value="QR"
-                    on:click="{() => updateSelected(3)}" />
-                </label>
-
-                <label
-                  class="{selected[4] ? 'border-cyan-us bg-cyan-us-alpha' : 'border-blue-us'} flex items-center
-                  justify-between border-solid border-1 rounded p-4 h-16 mb-2">
-                  <span class="{selected[4] ? 'text-cyan-us' : 'text-white-us'} ml-2 font-raleway">
                     Bitcoin
-                    <span class="text-gray-us">(BTC)</span>
+                    <span class="font-semibold">(BTC)</span>
                   </span>
                   <input
                     type="radio"
                     class="transition-all-4 form-radio h-5 w-5 text-white-us"
                     name="type"
                     value="BTC"
-                    on:click="{() => updateSelected(4)}" />
+                    on:click="{() => updateSelected(3)}" />
                 </label>
               </div>
             </section>
@@ -207,18 +181,15 @@
     <Route path="/type=bankTransfer">
       <BankTransfer amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'bankTransfer'}" {currentMonth} />
     </Route>
-    <!-- <Route path="/type=cash">
-      <Cash amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'cash'}" {currentMonth} />
-    </Route> -->
-    <Route path="/type=debitCard">
-      <Card amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'debitCard'}" {currentMonth} />
+
+    <Route path="/type=card">
+      <Card amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'card'}" {currentMonth} />
     </Route>
-    <Route path="/type=creditCard">
-      <Card amount="{creditCard}" course="{'Full Stack JavaScript'}" type="{'creditCard'}" {currentMonth} />
+
+    <Route path="/type=MP">
+      <MP amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'MP'}" {currentMonth} />
     </Route>
-    <Route path="/type=QR">
-      <QR amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'QR'}" {currentMonth} />
-    </Route>
+
     <Route path="/type=BTC">
       <BTC amount="{BTCa}" course="{'Full Stack JavaScript'}" type="{'BTC'}" {currentMonth} />
     </Route>

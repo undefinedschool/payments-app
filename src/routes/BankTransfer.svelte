@@ -1,8 +1,7 @@
 <script>
-  import { navigate } from 'svelte-routing';
   import PaymentSummary from '../components/Payments/PaymentSummary.svelte';
-  import GoBackButton from '../components/Buttons/GoBackButton.svelte';
-  import PayButton from '../components/Buttons/PayButton.svelte';
+  import GoBack from '../components/Buttons/GoBack.svelte';
+  import Pay from '../components/Buttons/Pay.svelte';
   import { fade } from 'svelte/transition';
 
   export let amount;
@@ -10,12 +9,11 @@
   export let type;
   export let currentMonth;
 
-  const CBU = '00701590 30004031454484';
-  const CBUAlias = 'nhquiroz-galicia';
+  const { CBU, CBU_ALIAS } = process.env;
 
   const bankData = {
     CBU,
-    CBUAlias,
+    CBU_ALIAS,
   };
 </script>
 
@@ -24,9 +22,9 @@
     <PaymentSummary {type} {course} {currentMonth} {amount} {bankData} />
 
     <div class="flex">
-      <GoBackButton />
+      <GoBack />
 
-      <PayButton action="{'https://undefinedschool.io'}" value="{'¡Ok!'}" />
+      <Pay url="{'https://undefinedschool.io'}" value="{'¡Ok!'}" />
     </div>
   </div>
 </main>
