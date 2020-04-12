@@ -8,7 +8,8 @@
     "start": "sirv public",
     "start:dev": "sirv public --dev",
     "dev": "run-p start:dev autobuild watch:tailwind",
-    "build": "npm run build:tailwind && rollup -c"
+    "build": "npm run build:tailwind && rollup -c",
+    "lambda-build": "netlify-lambda build functions && node -p 'process.env'"
   },
   "husky": {
     "hooks": {
