@@ -1,0 +1,12 @@
+{
+  "build": {
+    "env": {
+      "COURSE_AMOUNT": "@course_amount",
+      "CBU": "@cbu",
+      "CBU_ALIAS": "@cbu_alias",
+      "BTC_WALLET": "@btc_wallet",
+      "PAYMENTS_SERVICE_WARMUP_URL": "@payments_service_warmup_url",
+      "PAYMENTS_SERVICE_URL": "@payments_service_url"
+    }
+  }
+}
