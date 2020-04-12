@@ -7,10 +7,6 @@ const app = new App({
       name: 'Jane Doe',
       email: 'jane@undefinedstudent.com',
     },
-    amount: {
-      ARS: process.env.COURSE_AMOUNT,
-      BTCa: 0.012,
-    },
   },
 });
 

@@ -23,9 +23,12 @@
     <div class="flex">
       <GoBack />
 
-      <!-- <Pay action="{makePayment}" value="{'Pagar con Mercado Pago'}" /> -->
-
-      <button on:click="{() => makePayment(PAYMENT_DATA)}">Realizar el Pago</button>
+      <button
+        on:click="{() => makePayment(PAYMENT_DATA)}"
+        class="submit-button text-center w-full rounded focus:outline-none focus:shadow-outline shadow-md"
+        type="button">
+        Realizar el Pago
+      </button>
     </div>
   </div>
 </main>

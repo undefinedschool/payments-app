@@ -4,7 +4,7 @@
   export const getPaymentData = ({ course, currentMonth, amount }) => ({
     id: 'FSJS',
     title: `${course} (${currentMonth})`,
-    unit_price: amount,
+    unit_price: parseInt(amount),
   });
 
   export function makePayment({ data, type }) {
@@ -12,13 +12,11 @@
 
     fetch(`${PAYMENTS_SERVICE_URL}?paymentType=${type}`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(PAYMENT_DATA),
     })
-      .then(res => res.text())
-      .then(res => window.location.replace(res))
+      .then(res => res.json())
+      .then(res => window.location.replace(res.CHECKOUT_URL))
       .catch(console.error);
   }
 </script>

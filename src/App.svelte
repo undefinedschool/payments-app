@@ -12,10 +12,9 @@
   import Clipboard from 'clipboard';
   // exports
   export let student;
-  export let amount;
   // local state
   const { name, email } = student;
-  const { ARS, BTCa } = amount;
+  const { COURSE_AMOUNT } = process.env;
 
   const selected = [0, 0, 0, 0];
   const routes = {
@@ -179,19 +178,23 @@
       </main>
     </Route>
     <Route path="/type=bankTransfer">
-      <BankTransfer amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'bankTransfer'}" {currentMonth} />
+      <BankTransfer
+        amount="{COURSE_AMOUNT}"
+        course="{'Full Stack JavaScript'}"
+        type="{'bankTransfer'}"
+        {currentMonth} />
     </Route>
 
     <Route path="/type=card">
-      <Card amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'card'}" {currentMonth} />
+      <Card amount="{COURSE_AMOUNT}" course="{'Full Stack JavaScript'}" type="{'card'}" {currentMonth} />
     </Route>
 
     <Route path="/type=MP">
-      <MP amount="{ARS}" course="{'Full Stack JavaScript'}" type="{'MP'}" {currentMonth} />
+      <MP amount="{COURSE_AMOUNT}" course="{'Full Stack JavaScript'}" type="{'MP'}" {currentMonth} />
     </Route>
 
     <Route path="/type=BTC">
-      <BTC amount="{BTCa}" course="{'Full Stack JavaScript'}" type="{'BTC'}" {currentMonth} />
+      <BTC amount="{0.012}" course="{'Full Stack JavaScript'}" type="{'BTC'}" {currentMonth} />
     </Route>
   </div>
 </Router>
