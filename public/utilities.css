@@ -83,3 +83,12 @@
   text-decoration: underline;
   transition: all 0.4s;
 }
+
+/* emojis */
+.w-6pc {
+  width: 6%;
+}
+
+.w-11pc {
+  width: 11%;
+}
