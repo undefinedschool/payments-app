@@ -1,5 +1,5 @@
 <script context="module">
-  const { PAYMENTS_SERVICE_URL } = process.env;
+  const { PAYMENTS_SERVICE } = process.env;
 
   export const getPaymentData = ({ course, currentMonth, amount }) => ({
     id: 'FSJS',
@@ -10,7 +10,7 @@
   export function makePayment({ data, type }) {
     const PAYMENT_DATA = getPaymentData(data);
 
-    fetch(`${PAYMENTS_SERVICE_URL}?paymentType=${type}`, {
+    fetch(`${PAYMENTS_SERVICE}?paymentType=${type}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(PAYMENT_DATA),

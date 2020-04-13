@@ -56,12 +56,9 @@
   clipboard.on('error', e => console.error('Oops, something went wrong while copying...'));
 
   // warm up serverless functions
-  const { PAYMENTS_SERVICE_WARMUP_URL } = process.env;
+  const { PAYMENTS_SERVICE } = process.env;
 
-  (() =>
-    fetch(PAYMENTS_SERVICE_WARMUP_URL)
-      .then(_ => _)
-      .catch(console.error))();
+  (() => fetch(PAYMENTS_SERVICE, { method: 'HEAD' }))();
 </script>
 
 <Router>
