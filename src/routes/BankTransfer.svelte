@@ -3,6 +3,7 @@
   import GoBack from '../components/Buttons/GoBack.svelte';
   import Pay from '../components/Buttons/Pay.svelte';
   import { fade } from 'svelte/transition';
+  import { notifyPayment } from '../components/Payments/utils.svelte';
 
   export let amount;
   export let course;
@@ -24,7 +25,17 @@
     <div class="flex">
       <GoBack />
 
-      <Pay url="{'https://undefinedschool.io'}" value="{'¡Ok!'}" />
+      <!-- <Pay action="{() => notifyPayment()}" url="{'https://undefinedschool.io'}" value="{'¡Ok!'}" /> -->
+      <div class="w-2/3">
+        <a href="https://undefinedschool.io" class="text-s">
+          <button
+            on:click="{notifyPayment()}"
+            class="submit-button text-center w-full rounded focus:outline-none focus:shadow-outline shadow-md"
+            type="button">
+            ¡Ok!
+          </button>
+        </a>
+      </div>
     </div>
   </div>
 </main>

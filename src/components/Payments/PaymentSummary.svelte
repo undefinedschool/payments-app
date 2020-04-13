@@ -1,19 +1,18 @@
 <script>
+  import { paymentMap } from './utils.svelte';
+  // props
   export let type;
   export let course;
   export let currentMonth;
   export let amount;
   export let BTC_WALLET = '';
   export let bankData = '';
-
+  // local state
   const { CBU, CBU_ALIAS } = bankData;
-
-  const payment = {
-    bankTransfer: 'Transferencia Bancaria ó Depósito',
-    card: 'Tarjeta de Débito ó Crédito',
-    MP: 'Mercado Pago',
-    BTC: 'BTC',
-  };
+  const paymentType = paymentMap[type];
+  // udpate store
+  import { paymentData } from '../../store.js';
+  paymentData.update(prevState => ({ ...prevState, type: paymentType }));
 </script>
 
 <div class="sm:mb-12 mb-20">
@@ -23,7 +22,7 @@
       text-center sm:text-left">
       Pago
       {#if type === 'BTC'}en{:else if type === 'bankTransfer'}por{:else}con{/if}
-      <span class="font-semibold text-cyan-us">{payment[type]}</span>
+      <span class="font-semibold text-cyan-us">{paymentType}</span>
     </h1>
 
     <div class="shadow-md bg-blue-us border-1 border-blue-us rounded p-2">

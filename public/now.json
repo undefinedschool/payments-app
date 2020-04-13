@@ -5,7 +5,8 @@
       "CBU": "@cbu",
       "CBU_ALIAS": "@cbu_alias",
       "BTC_WALLET": "@btc_wallet",
-      "PAYMENTS_SERVICE": "@payments_service"
+      "PAYMENTS_SERVICE": "@payments_service",
+      "MAIL_SERVICE": "@mail_service"
     }
   }
 }

@@ -3,6 +3,9 @@
   import { Router, Route, navigate } from 'svelte-routing';
   import { capitalize, getCurrentMonth } from './components/utils.svelte';
   import BankTransfer from './routes/BankTransfer.svelte';
+  import { onMount } from 'svelte';
+  // store
+  import { paymentData } from './store.js';
   // import  from './routes/.svelte';
   import Card from './routes/Card.svelte';
   import MP from './routes/MP.svelte';
@@ -11,10 +14,15 @@
   import SelectPaymentMethodTitle from './components/Payments/SelectPaymentMethodTitle.svelte';
   import Clipboard from 'clipboard';
   // exports
-  export let student;
+  export let course;
+  export let placeholder;
+  // update store
+  paymentData.update(prevState => ({ ...prevState, course }));
   // local state
-  const { name, email } = student;
+  const { name, email } = placeholder;
   const { COURSE_AMOUNT } = process.env;
+  let studentName = '';
+  let studentEmail = '';
 
   const selected = [0, 0, 0, 0];
   const routes = {
@@ -56,9 +64,10 @@
   clipboard.on('error', e => console.error('Oops, something went wrong while copying...'));
 
   // warm up serverless functions
-  const { PAYMENTS_SERVICE } = process.env;
-
-  (() => fetch(PAYMENTS_SERVICE, { method: 'HEAD' }))();
+  onMount(() => {
+    const { PAYMENTS_SERVICE } = process.env;
+    fetch(PAYMENTS_SERVICE, { method: 'HEAD' });
+  });
 </script>
 
 <Router>
@@ -78,6 +87,7 @@
               <div class="mb-3">
                 <label class="form-input-title font-raleway opacity-70" for="name">Nombre</label>
                 <input
+                  bind:value="{studentName}"
                   class="form-input focus:outline-none focus:shadow-outline student-info-input"
                   aria-label="Nombre"
                   type="text"
@@ -89,6 +99,7 @@
               <div class="mb-8">
                 <label class="form-input-title font-raleway opacity-70" for="email">E-mail</label>
                 <input
+                  bind:value="{studentEmail}"
                   class="form-input focus:outline-none focus:shadow-outline student-info-input"
                   aria-label="Nombre"
                   type="email"
@@ -165,6 +176,10 @@
             </section>
 
             <button
+              on:click="{() => paymentData.update(prevState => ({
+                  ...prevState,
+                  student: { name: studentName, email: studentEmail },
+                }))}"
               class="submit-button text-center w-full rounded focus:outline-none focus:shadow-outline shadow-md"
               type="submit">
               Continuar
@@ -175,23 +190,19 @@
       </main>
     </Route>
     <Route path="/type=bankTransfer">
-      <BankTransfer
-        amount="{COURSE_AMOUNT}"
-        course="{'Full Stack JavaScript'}"
-        type="{'bankTransfer'}"
-        {currentMonth} />
+      <BankTransfer amount="{COURSE_AMOUNT}" {course} type="{'bankTransfer'}" {currentMonth} />
     </Route>
 
     <Route path="/type=card">
-      <Card amount="{COURSE_AMOUNT}" course="{'Full Stack JavaScript'}" type="{'card'}" {currentMonth} />
+      <Card amount="{COURSE_AMOUNT}" {course} type="{'card'}" {currentMonth} />
     </Route>
 
     <Route path="/type=MP">
-      <MP amount="{COURSE_AMOUNT}" course="{'Full Stack JavaScript'}" type="{'MP'}" {currentMonth} />
+      <MP amount="{COURSE_AMOUNT}" {course} type="{'MP'}" {currentMonth} />
     </Route>
 
     <Route path="/type=BTC">
-      <BTC amount="{0.012}" course="{'Full Stack JavaScript'}" type="{'BTC'}" {currentMonth} />
+      <BTC amount="{0.012}" {course} type="{'BTC'}" {currentMonth} />
     </Route>
   </div>
 </Router>
