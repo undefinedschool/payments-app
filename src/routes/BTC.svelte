@@ -21,14 +21,12 @@
       <GoBack />
 
       <div class="w-2/3">
-        <a href="https://undefinedschool.io" class="text-s">
-          <button
-            on:click|once="{notifyPayment}"
-            class="submit-button text-center w-full rounded focus:outline-none focus:shadow-outline shadow-md"
-            type="button">
-            ¡Ok!
-          </button>
-        </a>
+        <button
+          on:click|once="{notifyPayment}"
+          class="submit-button text-center w-full rounded focus:outline-none focus:shadow-outline shadow-md"
+          type="button">
+          ¡Ok!
+        </button>
       </div>
     </div>
   </div>

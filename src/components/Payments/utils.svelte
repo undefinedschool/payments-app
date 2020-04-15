@@ -39,7 +39,7 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(MAIL_DATA),
     })
-      .then(res => res.json())
+      .then(_ => window.location.replace('https://undefinedschool.io'))
       .catch(console.error);
   }
 </script>
