@@ -3,8 +3,8 @@
   <span class="font-semibold text-cyan-us">
     pago
     <img
-      class="inline h-auto emoji"
-      src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/twitter/236/money-mouth-face_1f911.png"
+      class="inline h-auto sm:w-10 md:w-12"
+      src="https://twemoji.maxcdn.com/v/latest/svg/1f911.svg"
       alt="money mouth face emoji" />
   </span>
 </h1>

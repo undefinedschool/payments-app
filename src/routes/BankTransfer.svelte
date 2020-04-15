@@ -29,7 +29,7 @@
       <div class="w-2/3">
         <a href="https://undefinedschool.io" class="text-s">
           <button
-            on:click="{notifyPayment()}"
+            on:click|once="{notifyPayment}"
             class="submit-button text-center w-full rounded focus:outline-none focus:shadow-outline shadow-md"
             type="button">
             ¡Ok!

@@ -4,6 +4,7 @@
   import { capitalize, getCurrentMonth } from './components/utils.svelte';
   import BankTransfer from './routes/BankTransfer.svelte';
   import { onMount } from 'svelte';
+  const { PAYMENTS_SERVICE, MAIL_SERVICE } = process.env;
   // store
   import { paymentData } from './store.js';
   // import  from './routes/.svelte';
@@ -65,8 +66,8 @@
 
   // warm up serverless functions
   onMount(() => {
-    const { PAYMENTS_SERVICE } = process.env;
     fetch(PAYMENTS_SERVICE, { method: 'HEAD' });
+    fetch(MAIL_SERVICE, { method: 'HEAD' });
   });
 </script>
 

@@ -2,7 +2,7 @@
   // store
   import { paymentData } from '../../store.js';
   import { get } from 'svelte/store';
-
+  // services
   const { PAYMENTS_SERVICE, MAIL_SERVICE } = process.env;
 
   export const paymentMap = {
@@ -34,7 +34,7 @@
   export function notifyPayment() {
     const MAIL_DATA = get(paymentData);
 
-    fetch(`${MAIL_SERVICE}`, {
+    return fetch(`${MAIL_SERVICE}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(MAIL_DATA),
