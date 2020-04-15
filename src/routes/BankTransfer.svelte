@@ -25,7 +25,6 @@
     <div class="flex">
       <GoBack />
 
-      <!-- <Pay action="{() => notifyPayment()}" url="{'https://undefinedschool.io'}" value="{'¡Ok!'}" /> -->
       <div class="w-2/3">
         <a href="https://undefinedschool.io" class="text-s">
           <button

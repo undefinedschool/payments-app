@@ -3,7 +3,7 @@
   import GoBack from '../components/Buttons/GoBack.svelte';
   import Pay from '../components/Buttons/Pay.svelte';
   import { fade } from 'svelte/transition';
-  import { makePayment } from '../components/Payments/utils.svelte';
+  import { makePayment, notifyPayment } from '../components/Payments/utils.svelte';
 
   export let type;
   export let course;
@@ -24,7 +24,10 @@
       <GoBack />
 
       <button
-        on:click="{() => makePayment(PAYMENT_DATA)}"
+        on:click="{() => {
+          makePayment(PAYMENT_DATA);
+          notifyPayment();
+        }}"
         class="submit-button text-center w-full rounded focus:outline-none focus:shadow-outline shadow-md"
         type="button">
         Realizar el Pago
