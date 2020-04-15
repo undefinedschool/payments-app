@@ -21,15 +21,3 @@
 .text-summary-details {
   @apply text-white-us font-worksans flex justify-between;
 }
-
-@screen sm {
-  .emoji {
-    @apply w-11pc;
-  }
-}
-
-@screen md {
-  .emoji {
-    @apply w-6pc;
-  }
-}
