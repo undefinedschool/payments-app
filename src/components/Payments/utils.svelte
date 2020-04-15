@@ -26,8 +26,11 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(PAYMENT_DATA),
     })
-      .then(res => res.json())
-      .then(res => window.location.replace(res.CHECKOUT_URL))
+      .then(res => {
+        res.json();
+        notifyPayment();
+        window.location.replace(res.CHECKOUT_URL);
+      })
       .catch(console.error);
   }
 
