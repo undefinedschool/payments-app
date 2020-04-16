@@ -26,15 +26,15 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(PAYMENT_DATA),
     })
+      .then(res => res.json())
       .then(res => {
-        res.json();
-        notifyPayment();
         window.location.replace(res.CHECKOUT_URL);
+        notifyPayment();
       })
       .catch(console.error);
   }
 
-  export function notifyPayment() {
+  export function notifyPayment(type = '') {
     const MAIL_DATA = get(paymentData);
 
     return fetch(`${MAIL_SERVICE}`, {
@@ -42,7 +42,13 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(MAIL_DATA),
     })
-      .then(_ => window.location.replace('https://undefinedschool.io'))
+      .then(res => {
+        res.json();
+
+        if (['bankTransfer', 'BTC'].includes(type)) {
+          window.location.replace('https://undefinedschool.io');
+        }
+      })
       .catch(console.error);
   }
 </script>
